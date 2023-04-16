@@ -27,12 +27,12 @@
                     <th scope="col">Options</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="basket-tr">
                 @foreach (var item in Model)
                 {
 
 
-                    <tr>
+                    <tr  data-id="@item.Id">
 
 
 
@@ -41,9 +41,17 @@
                         <td>@item.Name </td>
                         <td>@item.Description </td>
                         <td>@item.Price ₼ </td>
-                        <td>@item.Count</td>
-                        <td>@item.Total ₼</td>
-                        <td><a asp-action="Delete" asp-route-id="@item.Id" class=" btn btn-danger btn-sm ">Delete</a> </td>
+                        <td class="basket-count">@item.Count</td>
+                        <td class="total-price">@item.Total </td>
+                         
+                        <td>
+                            <form method="post">
+
+                                <button data-id="@item.Id" class=" btn btn-danger btn-sm delete-icons ">Delete</button>
+
+                            </form>
+                           
+                         </td>
 
                     </tr>
 
@@ -52,7 +60,8 @@
             </tbody>
         </table>
 
-        <h3 class="my-4 text-right">Grand Total:@grandTotal ₼</h3>
+        <h1 class="my-4 text-right grand-total"> Grand Total : <span>@grandTotal</span>₼</h1>
+
     }
     else
     {

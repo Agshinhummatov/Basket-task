@@ -63,7 +63,7 @@ namespace EntityFramework_Slider.Controllers
 
         }
 
-        [ActionName("Delete")]
+        //[ActionName("Delete")]
         public IActionResult DeleteProductFormBasket(int? id)
         {
             if (id is null) return BadRequest();
@@ -77,7 +77,7 @@ namespace EntityFramework_Slider.Controllers
 
             Response.Cookies.Append("basket", JsonConvert.SerializeObject(basketProducts));
 
-            return RedirectToAction("Index");
+            return Ok();
 
         }
     }

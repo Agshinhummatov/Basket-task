@@ -19,7 +19,6 @@ namespace EntityFramework_Slider.Controllers
 
         public async Task<IActionResult> Index()
         {
-
             List<Slider> sliders = await _context.Sliders.ToListAsync();
 
             SliderInfo sliderInfo = await _context.SliderInfos.FirstOrDefaultAsync();

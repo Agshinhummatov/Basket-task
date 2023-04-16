@@ -1,6 +1,51 @@
 $(document).ready(function () {
 
 
+    //delete
+    $(document).on("click", ".delete-icons", function (ev) {
+
+        ev.preventDefault();
+
+        let dataId = $(this).attr("data-id");
+
+        
+
+        $.ajax({
+
+            url: `cart/deleteproductformbasket?id=${dataId}`,
+            type: "Post",
+            success: function (res) {
+
+
+              
+
+            }
+
+
+        })
+
+        var totalComon = $(".grand-total span").html()
+
+        var productTotal = $(this).parent().parent().prev().html()
+
+        var res = parseFloat(totalComon) - parseFloat(productTotal)
+
+        $(".grand-total span").html(res)
+
+
+        $(this).parent().parent().parent().remove()
+
+
+        
+       
+      
+
+
+    })
+
+
+
+
 
     //Add basket 
     $(document).on("click", ".add-to-cart", function (ev) {
@@ -15,8 +60,6 @@ $(document).ready(function () {
             type: "Post",
             success: function (res) {
 
-               // console.log(res)
-               //$(".basket-table").append(res)
 
 
             }
